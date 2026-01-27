@@ -25,13 +25,13 @@
     - **Validates: Requirements 4.1, 4.4, 4.5**
 
 - [ ] 3. Implement rolling average calculator
-  - [ ] 3.1 Create RollingAverageCalculator with circular buffer storage
+  - [x] 3.1 Create RollingAverageCalculator with circular buffer storage
     - Implement circular buffer for efficient data storage
     - Create time window configuration and management
     - Add methods for adding data points and calculating averages
     - _Requirements: 1.1, 1.2_
 
-  - [ ] 3.2 Add time window separation and partial data handling
+  - [x] 3.2 Add time window separation and partial data handling
     - Implement separate calculations for different time windows
     - Add logic for partial data marking when insufficient samples
     - Create timestamp tracking for calculation results
@@ -46,13 +46,13 @@
     - **Validates: Requirements 1.2**
 
 - [ ] 4. Implement extremes tracking system
-  - [ ] 4.1 Create ExtremesTracker with current and historical tracking
+  - [x] 4.1 Create ExtremesTracker with current and historical tracking
     - Implement current period min/max tracking
     - Add historical period storage and management
     - Create methods for updating and querying extremes
     - _Requirements: 2.1, 2.2_
 
-  - [ ] 4.2 Add immediate update logic and period reset functionality
+  - [x] 4.2 Add immediate update logic and period reset functionality
     - Implement immediate extreme value updates during processing
     - Add period reset with historical preservation
     - Create timestamp and metadata tracking for extremes
