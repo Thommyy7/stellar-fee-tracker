@@ -70,13 +70,13 @@
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 6. Implement congestion detection system
-  - [ ] 6.1 Create CongestionDetector with spike detection logic
+  - [x] 6.1 Create CongestionDetector with spike detection logic
     - Implement spike detection algorithm comparing fees to baselines
     - Add spike classification by severity and duration
     - Create data structures for spike representation
     - _Requirements: 3.1, 3.2_
 
-  - [ ] 6.2 Add trend analysis and aggregation capabilities
+  - [x] 6.2 Add trend analysis and aggregation capabilities
     - Implement multiple spike aggregation into trend indicators
     - Add trend strength calculation and duration prediction
     - Create congestion trend data structures and updates
@@ -91,7 +91,7 @@
     - **Validates: Requirements 3.3, 3.4, 3.5**
 
 - [ ] 7. Implement central fee insights engine
-  - [ ] 7.1 Create FeeInsightsEngine orchestrator
+  - [x] 7.1 Create FeeInsightsEngine orchestrator
     - Implement main engine struct with all component integration
     - Add configuration management and initialization
     - Create main processing method that coordinates all calculations
