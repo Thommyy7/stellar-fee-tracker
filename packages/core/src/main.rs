@@ -3,6 +3,7 @@ mod config;
 mod error;
 mod logging;
 mod services;
+mod scheduler;
 
 use clap::Parser;
 use dotenvy::dotenv;
@@ -12,6 +13,7 @@ use crate::config::Config;
 use crate::error::AppError;
 use crate::logging::init_logging;
 use crate::services::horizon::HorizonClient;
+use crate::scheduler::run_fee_polling;
 
 #[tokio::main]
 async fn main() {
@@ -41,19 +43,18 @@ async fn main() {
         horizon_client.base_url()
     );
 
-    // Fetch fee stats (Issue 5 integration)
-    match horizon_client.fetch_fee_stats().await {
-        Ok(stats) => {
-            tracing::info!("Base fee: {}", stats.last_ledger_base_fee);
-            tracing::info!(
-                "Fee charged — min: {}, max: {}, avg: {}",
-                stats.fee_charged.min,
-                stats.fee_charged.max,
-                stats.fee_charged.avg
-            );
-        }
-        Err(err) => {
-            tracing::error!("Failed to fetch fee stats: {}", err);
-        }
-    }
+    // --------------------------------------------------------
+    // START POLLING LOOP (Issue 8)
+    // --------------------------------------------------------
+    //
+    // This call blocks the application until Ctrl+C (SIGINT).
+    // All fee fetching now happens inside the scheduler.
+    //
+    run_fee_polling(
+        horizon_client,
+        config.poll_interval_seconds,
+    )
+    .await;
+
+    tracing::info!("Application shut down cleanly");
 }
